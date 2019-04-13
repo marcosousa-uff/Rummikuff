@@ -1,0 +1,15 @@
+			:	IA	:	Estrutura	:	Interface	:	
+			:		:				:				:
+Patrícia	:	X	:		X		:				:
+			:		:				:		X		:
+Felipe		:		:		X		:				:
+			:		:				:				:
+André		:	X	:		X		:				:
+			:		:				:				:
+Marcos		:		:		X		:		X		:
+			:		:				:				:
+Matheus		:		:		X		:				:
+			:		:				:				:
+Carlos		:		:		X		:		X		:
+			:		:				:				:
+Gustavo		:	X	:		X		:				:
