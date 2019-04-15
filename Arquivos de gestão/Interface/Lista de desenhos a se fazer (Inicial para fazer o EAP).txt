@@ -1,0 +1,14 @@
+Tarefas de Interface a serem feitas:
+
+- Desenho das pedras (com seus números de cores diferentes)
+- Desenho do tabuleiro (onde serão colocadas as pedras)
+- Desenho do background (com seus espaços definidos como: onde entrará as imagens dos jogadores PC, a mão do jogador, as pedras, o relógio da jogada...)
+- Desenho do relógio (que maracará o tempo de cada jogada mostrando quando o tempo está próximo de acabar)
+- Desenho dos ícones dos jogadores (provavelmente 1 para o jogador físico e 1 padronizado para a máquina)
+- Desenho do espaço que mostra a mão do jogador
+- Desenho do bolo de cartas que o jogador poderá comprar
+- Desenho do menu principal
+- Desenho da tela de informações
+- Desenho da tela de regras
+- Desenho da tela de pause
+- Desenho dos botões
