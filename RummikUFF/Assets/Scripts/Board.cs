@@ -41,7 +41,7 @@ public class Board : MonoBehaviour
         List<Deck.Carta> grupo = new List<Deck.Carta>();
         for (int i = 0; i < X_SIZE; i++)
         {
-            PieceMovement pm = tab[linha, i].GetComponent<PieceMovement>();
+            Peca pm = tab[linha, i].GetComponent<Peca>();
             if (tab[linha, i] == null && grupo.Count != 0)
             {
                 if (!ValidarGrupo(grupo)) return false;
@@ -49,7 +49,7 @@ public class Board : MonoBehaviour
             }
             if (tab[linha, i] != null)
             {
-                Deck.Carta carta = new Deck.Carta(pm.numero, pm.cor);
+                Deck.Carta carta = new Deck.Carta(pm.Numero, pm.Cor);
                 grupo.Add(carta);
             }
 
@@ -61,6 +61,33 @@ public class Board : MonoBehaviour
     public bool ValidarTabuleiro()
     {
         return false;
+    }
+
+    public void OrganizarTabuleio()
+    {
+
+    }
+
+    public Vector2Int PosicaoMatriz(Vector2 posicao)
+    {
+        int posicaoMatrixX = (int)((posicao.x - BOARD_START_X - (TILE_SIZE_X / 2)) / TILE_SIZE_X);
+        int posicaoMatrixY = (int)(Y_SIZE - ((posicao.y - BOARD_START_Y - (TILE_SIZE_Y / 2)) / TILE_SIZE_Y) - 1);
+
+        return new Vector2Int(posicaoMatrixX, posicaoMatrixY);
+    }
+
+    public Vector2 PosicaoCelula(Vector2 posicaoAtual)
+    {
+        posicaoAtual.x -= BOARD_START_X;
+        posicaoAtual.y -= BOARD_START_Y;
+
+        float posicaoX = ((int)((posicaoAtual.x / TILE_SIZE_X)) * TILE_SIZE_X) + TILE_SIZE_X / 2;
+        float posicaoY = ((int)((posicaoAtual.y / TILE_SIZE_Y)) * TILE_SIZE_Y) + TILE_SIZE_Y / 2;
+
+        posicaoX += BOARD_START_X;
+        posicaoY += BOARD_START_Y;
+
+        return new Vector2(posicaoX, posicaoY);
     }
 
 }

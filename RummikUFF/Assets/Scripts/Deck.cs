@@ -16,7 +16,7 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public List<Carta> baralho;
+    private List<Carta> baralho;
     public bool turno;
 
     // Start is called before the first frame update
@@ -37,41 +37,32 @@ public class Deck : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            comprarCard();
-            if (turno)
-            {
-                turno = false;
-            }
-            else
-            {
-                turno = true;
-            }
-            Debug.Log(turno);
+            JogadorHumano jogador = GameObject.Find("JogadorHumano").GetComponent<JogadorHumano>();
+            jogador.ComprarPeca();
+            jogador.turno = !jogador.turno;
         }
     }
 
-    void comprarCard()
+    public GameObject ComprarCard()
     {
-        //Compra carta aleatória do baralho      
+        //Compra carta aleatória do baralho
         int rn = Random.Range(0, baralho.Count);
         GameObject go = new GameObject("numero: "+baralho[rn].numero + ", cor: "+baralho[rn].cor);
         go.tag = "piece";
-        PieceMovement pm =  go.AddComponent<PieceMovement>();
-        pm.numero = baralho[rn].numero;
-        pm.cor = baralho[rn].cor;
+        // Adicionar o componente de peça ao GO.
+        Peca pm =  go.AddComponent<Peca>();
+        pm.Numero = baralho[rn].numero;
+        pm.Cor = baralho[rn].cor;
+        // Adcionar colisão
         BoxCollider2D bc = go.AddComponent<BoxCollider2D>();
         bc.size = new Vector2(1, 2);
         bc.isTrigger = true;
+        // Adiciona o sprite ao GameObject
         SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
         renderer.sortingLayerName = "02";
         renderer.sprite = Resources.Load<Sprite>("teste");
-
-        Mao bd = GameObject.Find("Mao").GetComponent<Mao>();
-        baralho.RemoveAt(rn);
-        bd.AdicionarPeca(go);
-        //cm.Adicionar(go);
-        //cm.Posicionar(go);
-
+        baralho.RemoveAt(rn); // remove do deck
+        return go;
     }
 
     void CriarDeck()
@@ -90,6 +81,5 @@ public class Deck : MonoBehaviour
         Carta coringa = new Carta(-1, -1);
         baralho.Add(coringa);
         baralho.Add(coringa);
-
     }
 }
