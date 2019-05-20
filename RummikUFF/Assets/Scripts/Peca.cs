@@ -5,13 +5,13 @@ using UnityEngine;
 public class Peca : MonoBehaviour
 {
     public int estado;// 0 Mao do jogador, 1 Está no tabuleiro momentaneamente, 2 Pertence ao Tabuleiro
-    private int numero;
-    private int cor;
+    public int numero;
+    public int cor;
     public Vector2 posicaoAnterior;
     public Vector2 posInicioRound;
     // Start is called before the first frame update
     void Start()
-    {   
+    {
 
     }
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class Peca : MonoBehaviour
 
     }
  
+    /*
     public int Numero
     {
         get { return numero; }
@@ -31,7 +32,7 @@ public class Peca : MonoBehaviour
     {
         get { return cor; }
         set { cor = value; }
-    }
+    }*/
 
         
 }

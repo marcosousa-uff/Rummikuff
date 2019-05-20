@@ -15,7 +15,7 @@ public class Board : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tab = new GameObject[8, 23];
+        tab = new GameObject[Y_SIZE, X_SIZE];
         for (int i = 0; i < X_SIZE; i++)
         {
             for (int y = 0; y < Y_SIZE; y++)
@@ -49,7 +49,7 @@ public class Board : MonoBehaviour
             }
             if (tab[linha, i] != null)
             {
-                Deck.Carta carta = new Deck.Carta(pm.Numero, pm.Cor);
+                Deck.Carta carta = new Deck.Carta(pm.numero, pm.cor);
                 grupo.Add(carta);
             }
 

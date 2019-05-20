@@ -11,7 +11,6 @@ public class Mao : MonoBehaviour
     public const int Y_SIZE = 2;
     public const int X_SIZE = 23;
     public GameObject[,] tab;
-
     // Start is called before the first frame update
     void Start()
     {

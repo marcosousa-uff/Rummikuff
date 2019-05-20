@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class JogadorHumano : JogadorBase
 {
-    // Start is called before the first frame update
     private Mao mao;
-    public bool turno;
     private GameObject pecaSelecionada;
 
     void Start()
@@ -14,17 +12,21 @@ public class JogadorHumano : JogadorBase
         mao = GameObject.Find("Mao").GetComponent<Mao>();
         turno = false;
         pecaSelecionada = null;
+        primeiraJogada = false;
+        fazendoMovimento = false;
+        roundTime = 5;
+        //FazMovimento();
     }
 
-    // Update is called once per frame
     void Update()
     {
+
         MovimentoPecas();
     }
 
     public override void FazMovimento()
     {
-        turno = true;
+        fazendoMovimento = true;
     }
 
     public override void ComprarPeca()
@@ -62,7 +64,6 @@ public class JogadorHumano : JogadorBase
                 Vector2 posicaoAtual = pecaSelecionada.transform.position;
                 Board board = GameObject.Find("Tabuleiro").GetComponent<Board>();
                 Mao mao = GameObject.Find("Mao").GetComponent<Mao>();
-                Deck tn = GameObject.Find("Deck").GetComponent<Deck>();
 
                 if (turno == true && posicaoAtual.x > Board.BOARD_START_X && posicaoAtual.x < Board.BOARD_START_X + (Board.X_SIZE * Board.TILE_SIZE_X) && posicaoAtual.y > Board.BOARD_START_Y && posicaoAtual.y < Board.BOARD_START_Y + (Board.Y_SIZE * Board.TILE_SIZE_Y))
                 {
@@ -91,7 +92,7 @@ public class JogadorHumano : JogadorBase
                         pecaSelecionada.transform.position = peca.posicaoAnterior;
                     }
                 }
-                else if (peca.estado != 2 && posicaoAtual.x > Mao.BOARD_START_X && posicaoAtual.x < Mao.BOARD_START_X + (Mao.X_SIZE * Mao.TILE_SIZE_X) && posicaoAtual.y > Mao.BOARD_START_Y && posicaoAtual.y < Mao.BOARD_START_Y + (Mao.Y_SIZE * Mao.TILE_SIZE_Y))
+                else if (peca.estado !=2 && posicaoAtual.x > Mao.BOARD_START_X && posicaoAtual.x < Mao.BOARD_START_X + (Mao.X_SIZE * Mao.TILE_SIZE_X) && posicaoAtual.y > Mao.BOARD_START_Y && posicaoAtual.y < Mao.BOARD_START_Y + (Mao.Y_SIZE * Mao.TILE_SIZE_Y))
                 {
                     Vector2 posicao = mao.PosicaoCelula(posicaoAtual);
                     Vector2Int posicaoMatriz = mao.PosicaoMatriz(posicao);

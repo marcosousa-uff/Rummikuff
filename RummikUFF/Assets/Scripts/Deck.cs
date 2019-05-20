@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Deck : MonoBehaviour
 {
     public class Carta
@@ -15,19 +16,14 @@ public class Deck : MonoBehaviour
             this.cor = cor;
         }
     }
-
     private List<Carta> baralho;
-    public bool turno;
 
-    // Start is called before the first frame update
     void Start()
     {
-        turno = false;
         CriarDeck();
         //Cria todas as cartas
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -35,11 +31,11 @@ public class Deck : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            JogadorHumano jogador = GameObject.Find("JogadorHumano").GetComponent<JogadorHumano>();
+        JogadorHumano jogador = GameObject.Find("JogadorHumano").GetComponent<JogadorHumano>();
+        if (jogador.turno && Input.GetMouseButtonDown(0) && baralho.Count > 0)
+        {            
             jogador.ComprarPeca();
-            jogador.turno = !jogador.turno;
+            jogador.fazendoMovimento = false;
         }
     }
 
@@ -51,8 +47,8 @@ public class Deck : MonoBehaviour
         go.tag = "piece";
         // Adicionar o componente de peça ao GO.
         Peca pm =  go.AddComponent<Peca>();
-        pm.Numero = baralho[rn].numero;
-        pm.Cor = baralho[rn].cor;
+        pm.numero = baralho[rn].numero;
+        pm.cor = baralho[rn].cor;
         // Adcionar colisão
         BoxCollider2D bc = go.AddComponent<BoxCollider2D>();
         bc.size = new Vector2(1, 2);
@@ -65,7 +61,15 @@ public class Deck : MonoBehaviour
         return go;
     }
 
-    void CriarDeck()
+    public Carta ComprarCardIA()
+    {
+        int rn = Random.Range(0, baralho.Count);
+        Carta carta = baralho[rn];
+        baralho.RemoveAt(rn);
+        return carta;
+    }
+
+    public void CriarDeck()
     {
         baralho = new List<Carta>();
 
