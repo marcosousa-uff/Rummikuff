@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/TelaInicial.unity
+    guid: b063b371333eb8541b38d8fdf36552f0
+  - enabled: 1
+    path: Assets/Scenes/TelaLoading.unity
+    guid: 4cbdd4b453fa0b84991d9327c338477a
+  - enabled: 1
+    path: Assets/Scenes/TeladoJogo.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/TelaDeRegras.unity
+    guid: 11c6d4033141fe34b9edd0224327b9a6
+  - enabled: 1
+    path: Assets/Scenes/TelaInfo.unity
+    guid: 0e4855995d7a9d74aac8371ae3129058
   m_configObjects: {}
